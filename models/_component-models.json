@@ -16,7 +16,15 @@
   },
   {
     "...": "./_section.json#/models"
+  }, 
+  
+  {
+    "...": "./_notice.json#/models "
   },
+  {
+    "...": "./_custom_card.json#/models "
+  },
+  
   {
     "...": "../blocks/*/_*.json#/models"
   }

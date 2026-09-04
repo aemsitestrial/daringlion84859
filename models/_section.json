@@ -51,7 +51,8 @@
         "cards",
         "columns",
         "fragment",
-        "custom_card"
+        "custom_card",
+        "notice"
       ]
     }
   ]
