@@ -17,14 +17,6 @@
   {
     "...": "./_section.json#/models"
   }, 
-  
-  {
-    "...": "./_notice.json#/models"
-  },
-  {
-    "...": "./_custom_cards.json#/models"
-  },
-
   {
     "...": "../blocks/*/_*.json#/models"
   }

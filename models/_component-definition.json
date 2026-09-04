@@ -32,12 +32,6 @@
       "id": "blocks",
       "components": [
         {
-          "...": "../blocks/custom_card/_custom_cards.json#/definitions"
-        },
-        {
-          "...": "../blocks/notice/_notice.json#/definitions"
-        },
-        {
           "...": "../blocks/*/_*.json#/definitions"
         }
       ]
