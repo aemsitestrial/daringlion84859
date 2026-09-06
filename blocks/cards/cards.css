@@ -53,7 +53,7 @@
 
 /* Any bold run defaults to the accent colour (covers the price) */
 .cards .cards-card-body strong {
-  color: var(--link-color);
+  color: #7b542f;
 }
 
 /* Drink name: the first bold run, shown as a prominent dark heading */
