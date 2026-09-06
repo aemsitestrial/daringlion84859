@@ -400,12 +400,14 @@ main .default-content-wrapper > h3 {
   text-align: center;
 }
 
-/* Welcome + About Urban Roast: card-like containers inset 40px from edges */
+/* Welcome + About Urban Roast: narrow card-like containers (match menu width) */
 main .default-content-wrapper:has(> #about-urban-roast),
 main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) {
   box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 715px;
   margin-block-start: 48px;
-  margin-inline: 40px;
+  margin-inline: auto;
   padding: 32px;
   border: 1px solid #e6d9cc;
   border-radius: 12px;
@@ -447,11 +449,14 @@ main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) > h5
   text-align: center;
 }
 
-/* Promo section: red banner, inset 40px from the page edges */
+/* Promo section: red banner, narrow (match menu width) */
 /* stylelint-disable-next-line no-descending-specificity */
 main .section:has(.gallery) {
-  margin-inline: 40px;
-  padding-block: 40px;
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 715px;
+  margin-inline: auto;
+  padding: 40px 24px;
   border-radius: 12px;
   background-color: #a13733;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
