@@ -261,7 +261,7 @@ button {
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
+  background-color: #c08552;
   color: var(--background-color);
   cursor: pointer;
   overflow: hidden;
@@ -273,7 +273,7 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: #a66f42;
   cursor: pointer;
 }
 
