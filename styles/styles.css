@@ -400,18 +400,77 @@ main .default-content-wrapper > h3 {
   text-align: center;
 }
 
-/* About Urban Roast: card-like container inset ~40px from the page edges */
-main .default-content-wrapper:has(> #about-urban-roast) {
+/* Welcome + About Urban Roast: card-like containers inset 40px from edges */
+main .default-content-wrapper:has(> #about-urban-roast),
+main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) {
   box-sizing: border-box;
-  width: calc(100% - 16px);
-  max-width: 900px;
   margin-block-start: 48px;
-  margin-inline: auto;
+  margin-inline: 40px;
   padding: 32px;
   border: 1px solid #e6d9cc;
   border-radius: 12px;
   background-color: #fff8f0;
   box-shadow: 0 6px 20px rgb(75 46 43 / 8%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Lift the section containers on hover */
+main .default-content-wrapper:has(> #about-urban-roast):hover,
+main .default-content-wrapper:has(> #where-great-coffee-meets-good-company):hover,
+main .section:has(.gallery):hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgb(75 46 43 / 20%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main .default-content-wrapper:has(> #about-urban-roast),
+  main .default-content-wrapper:has(> #where-great-coffee-meets-good-company),
+  main .section:has(.gallery) {
+    transition: none;
+  }
+
+  main .default-content-wrapper:has(> #about-urban-roast):hover,
+  main .default-content-wrapper:has(> #where-great-coffee-meets-good-company):hover,
+  main .section:has(.gallery):hover {
+    transform: none;
+  }
+}
+
+/* Welcome section: justified description, headings stay centered */
+main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) > p {
+  font-size: 14px;
+  text-align: justify;
+}
+
+main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) > h3,
+main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) > h5 {
+  text-align: center;
+}
+
+/* Promo section: red banner, inset 40px from the page edges */
+/* stylelint-disable-next-line no-descending-specificity */
+main .section:has(.gallery) {
+  margin-inline: 40px;
+  padding-block: 40px;
+  border-radius: 12px;
+  background-color: #a13733;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Promo (SALE) banner: keep near its native size so it stays crisp */
+/* stylelint-disable-next-line no-descending-specificity */
+main .section:has(.gallery) .default-content-wrapper img {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 8px;
+}
+
+/* Promo offer captions read white on the red background */
+main .section:has(.gallery) .gallery .gallery-caption {
+  color: #fff;
 }
 
 /* Justify the About Urban Roast description paragraphs */
@@ -422,13 +481,13 @@ main .default-content-wrapper:has(> #about-urban-roast) > p {
 
 /* Coffee category labels (Signature Drinks, Cold Brew, Non-Coffee): centered */
 /* stylelint-disable-next-line no-descending-specificity */
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) {
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) {
   margin-top: 32px;
   text-align: center;
   font-size: 22px;
 }
 
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em {
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em {
   position: relative;
   display: inline-block;
   color: var(--text-color);
@@ -437,7 +496,7 @@ main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-
 }
 
 /* Underline that grows from the center on hover */
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em::after {
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em::after {
   content: '';
   position: absolute;
   left: 0;
@@ -450,29 +509,30 @@ main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-
   transition: transform 0.3s ease;
 }
 
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em:hover,
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em.label-hover {
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em:hover,
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em.label-hover {
   transform: scale(1.08);
   color: #c08552;
 }
 
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em:hover::after,
-main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em.label-hover::after {
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em:hover::after,
+main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em.label-hover::after {
   transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em,
-  main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em::after {
+  main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em,
+  main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em::after {
     transition: none;
   }
 
-  main .default-content-wrapper:not(:has(> #about-urban-roast)) > p:has(> em:only-child > strong:only-child) > em:hover {
+  main .section:has(#menu) .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em:hover {
     transform: none;
   }
 }
 
 /* sections */
+/* stylelint-disable-next-line no-descending-specificity */
 main > .section {
   margin: 40px 0;
 }
@@ -483,6 +543,7 @@ main > .section > div {
   padding: 0 24px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main > .section:first-of-type {
   margin-top: 0;
 }
