@@ -72,6 +72,29 @@ function buildAutoBlocks() {
 }
 
 /**
+ * Turns a text label into a URL-friendly anchor id.
+ * @param {string} text the label text
+ * @returns {string} a slug, e.g. "Signature Drinks" -> "signature-drinks"
+ */
+export function toAnchorId(text) {
+  return text.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Gives bold category-label paragraphs (e.g. "Signature Drinks") an anchor id
+ * so they can be linked to from the nav.
+ * @param {Element} main The container element
+ */
+function decorateLabelAnchors(main) {
+  main.querySelectorAll('p > strong, p > em > strong').forEach((strong) => {
+    const p = strong.closest('p');
+    if (p && !p.id && p.textContent.trim() === strong.textContent.trim()) {
+      p.id = toAnchorId(strong.textContent);
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -83,6 +106,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateLabelAnchors(main);
 }
 
 /**

@@ -139,7 +139,8 @@ export default async function decorate(block) {
       // Make plain-text nav items clickable (placeholder link until authored).
       else if (!navSection.querySelector('a')) {
         const link = document.createElement('a');
-        link.href = '#';
+        // "Menu" jumps to the Signature Drinks section; others default to '#'.
+        link.href = navSection.textContent.trim().toLowerCase() === 'menu' ? '#signature-drinks' : '#';
         while (navSection.firstChild) link.append(navSection.firstChild);
         navSection.append(link);
       }
