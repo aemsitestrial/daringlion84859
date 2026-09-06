@@ -139,8 +139,9 @@ export default async function decorate(block) {
       // Make plain-text nav items clickable (placeholder link until authored).
       else if (!navSection.querySelector('a')) {
         const link = document.createElement('a');
-        // "Menu" jumps to the Signature Drinks section; others default to '#'.
-        link.href = navSection.textContent.trim().toLowerCase() === 'menu' ? '#signature-drinks' : '#';
+        // Map known nav labels to their in-page section anchors.
+        const targets = { menu: '#signature-drinks', 'about us': '#about-urban-roast' };
+        link.href = targets[navSection.textContent.trim().toLowerCase()] || '#';
         while (navSection.firstChild) link.append(navSection.firstChild);
         navSection.append(link);
       }
