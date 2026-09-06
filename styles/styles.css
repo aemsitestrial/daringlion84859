@@ -307,16 +307,24 @@ main img {
   width: 100%;
 }
 
-/* Hero photo: leading image of the first section, capped at 1920x900 */
+/* Hero photo: full-viewport-width banner at the top of the page */
+main > .section:first-child .default-content-wrapper > p:first-child {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-block: 0;
+  margin-inline: -50vw;
+}
+
 main > .section:first-child .default-content-wrapper > p:first-child picture,
 main > .section:first-child .default-content-wrapper > p:first-child picture img {
   display: block;
   width: 100%;
-  max-width: 1920px;
   aspect-ratio: 1920 / 900;
+  max-height: 80vh;
   height: auto;
   object-fit: cover;
-  margin-inline: auto;
 }
 
 /* Overlay the caption in the middle of the hero photo, in white */
@@ -324,16 +332,20 @@ main > .section:first-child .default-content-wrapper {
   position: relative;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main > .section:first-child .default-content-wrapper > p:has(em) {
   box-sizing: border-box;
   position: absolute;
   inset-block-start: 0;
-  inset-inline: 24px;
+  left: 50%;
+  width: 100vw;
+  margin-block: 0;
+  margin-inline: -50vw;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1920 / 900;
-  margin: 0;
+  max-height: 80vh;
   color: #fff;
   font-size: 16px;
   text-align: center;
@@ -343,10 +355,6 @@ main > .section:first-child .default-content-wrapper > p:has(em) {
 
 main > .section:first-child .default-content-wrapper > p:has(em) em {
   color: #fff;
-}
-
-main > .section:first-child .default-content-wrapper > p:first-child {
-  margin-block: 0;
 }
 
 /* Center the "Menu" heading and make it a little smaller */
