@@ -1,19 +1,63 @@
+.cards {
+  margin-top: 24px;
+}
+
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
 }
 
 .cards > ul > li {
   border: 1px solid #dadada;
+  border-radius: 8px;
+  overflow: hidden;
   background-color: var(--background-color);
 }
 
+/*
+ * Menu-friendly typography. Forgiving of how the card is authored:
+ * works whether name/description/price are separate paragraphs or a
+ * single paragraph split with <br>. The drink name is the first bold
+ * run; any later bold run (the price) picks up the accent colour.
+ */
 .cards .cards-card-body {
   margin: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.cards .cards-card-body > * {
+  margin: 0 0 8px;
+}
+
+.cards .cards-card-body > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Description: readable, not shouty */
+.cards .cards-card-body em {
+  font-style: normal;
+  color: #6b6b6b;
+}
+
+/* Any bold run defaults to the accent colour (covers the price) */
+.cards .cards-card-body strong {
+  color: var(--link-color);
+}
+
+/* Drink name: the first bold run, shown as a prominent dark heading */
+.cards .cards-card-body > strong:first-child,
+.cards .cards-card-body > p:first-child strong:first-child {
+  display: inline-block;
+  margin-bottom: 4px;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .cards .cards-card-image {

@@ -269,6 +269,12 @@ main > .section:first-child .default-content-wrapper > p:first-child {
   margin-block: 0;
 }
 
+/* Center the "Menu" heading and make it a little smaller */
+main .default-content-wrapper > h3 {
+  font-size: 28px;
+  text-align: center;
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;
