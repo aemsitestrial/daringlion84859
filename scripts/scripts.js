@@ -156,6 +156,10 @@ function initScrollReveal(main) {
         const index = siblings.indexOf(el);
         el.style.transitionDelay = index > 0 ? `${Math.min(index * 80, 400)}ms` : '';
         el.classList.add('revealed');
+        // Clear the stagger delay once revealed so hover reacts instantly.
+        if (el.style.transitionDelay) {
+          el.addEventListener('transitionend', () => { el.style.transitionDelay = ''; }, { once: true });
+        }
       } else {
         // Fade back out when scrolled past, no delay on the way out.
         el.style.transitionDelay = '';

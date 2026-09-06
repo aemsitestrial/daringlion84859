@@ -6,19 +6,16 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
-}
-
-@media (width >= 600px) {
-  .gallery > ul {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .gallery > ul > li {
   margin: 0;
+  flex: 1 1 200px;
+  max-width: 320px;
 }
 
 .gallery .gallery-image {
@@ -29,8 +26,8 @@
 
 .gallery .gallery-image img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   transition: transform 0.4s ease;
 }
 

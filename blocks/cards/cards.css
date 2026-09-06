@@ -26,6 +26,27 @@
 }
 
 /*
+ * Card transition covers both the scroll-reveal fade and the hover lift.
+ * The `.reveal` variant matches the scroll-reveal rule's specificity and,
+ * being defined later, wins so box-shadow/border-color also animate.
+ */
+main .cards > ul > li,
+main .cards > ul > li.reveal {
+  transition: opacity 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/*
+ * Lift the card with a shadow and accent border on hover. Scoped with
+ * `main` so it also carries box-shadow/border-color transitions even
+ * when the scroll-reveal rule sets the transform transition on the card.
+ */
+main .cards > ul > li:hover {
+  transform: translateY(-6px);
+  border-color: #c08552;
+  box-shadow: 0 10px 24px rgb(75 46 43 / 18%);
+}
+
+/*
  * Menu-friendly typography. Forgiving of how the card is authored:
  * works whether name/description/price are separate paragraphs or a
  * single paragraph split with <br>. The drink name is the first bold
@@ -66,6 +87,13 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+/* Highlight the drink name when its card is hovered */
+.cards > ul > li:hover .cards-card-body > strong:first-child,
+.cards > ul > li:hover .cards-card-body > p:first-child strong:first-child {
+  color: #ff9d00;
 }
 
 .cards .cards-card-image {
@@ -76,4 +104,21 @@
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cards > ul > li:hover img {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards > ul > li,
+  .cards > ul > li img {
+    transition: none;
+  }
+
+  .cards > ul > li:hover,
+  .cards > ul > li:hover img {
+    transform: none;
+  }
 }
