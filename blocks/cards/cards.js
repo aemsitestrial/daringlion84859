@@ -20,6 +20,27 @@ function linkToPicture(a) {
   return picture;
 }
 
+// An author may bundle the name and price inside a single bold run split by a
+// <br> (e.g. "<strong>Name<br>Price</strong>"). Split it into separate <strong>
+// runs so the name and price style consistently with the other cards.
+function splitBundledStrong(body) {
+  body.querySelectorAll('strong').forEach((strong) => {
+    if (!strong.querySelector('br')) return;
+    const parts = strong.innerHTML.split(/<br\s*\/?>/i)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (parts.length < 2) return;
+    const frag = document.createDocumentFragment();
+    parts.forEach((part, i) => {
+      const s = document.createElement('strong');
+      s.innerHTML = part;
+      frag.append(s);
+      if (i < parts.length - 1) frag.append(document.createElement('br'));
+    });
+    strong.replaceWith(frag);
+  });
+}
+
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -33,8 +54,12 @@ export default function decorate(block) {
       if (link && isImageLink(link)) {
         (link.closest('p') || link).replaceWith(linkToPicture(link));
       }
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+      if (div.children.length === 1 && div.querySelector('picture')) {
+        div.className = 'cards-card-image';
+      } else {
+        div.className = 'cards-card-body';
+        splitBundledStrong(div);
+      }
     });
     ul.append(li);
   });
