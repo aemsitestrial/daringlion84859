@@ -355,31 +355,9 @@ main .default-content-wrapper > h3 {
   text-align: center;
 }
 
-/* About Urban Roast: justified text, hidden until the section is hovered */
-main .default-content-wrapper:has(> #about-urban-roast) > h3 {
-  cursor: pointer;
-}
-
+/* Justify the About Urban Roast description paragraphs */
 main .default-content-wrapper:has(> #about-urban-roast) > p {
-  overflow: hidden;
-  max-height: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  opacity: 0;
   text-align: justify;
-  transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease;
-}
-
-main .default-content-wrapper:has(> #about-urban-roast):hover > p {
-  max-height: 300px;
-  margin-bottom: 16px;
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  main .default-content-wrapper:has(> #about-urban-roast) > p {
-    transition: none;
-  }
 }
 
 /* sections */

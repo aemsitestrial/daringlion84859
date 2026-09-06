@@ -52,7 +52,8 @@
         "columns",
         "fragment",
         "custom_cards",
-        "gallery"
+        "gallery",
+        "carousel"
       ]
     }
   ]

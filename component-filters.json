@@ -17,13 +17,20 @@
       "columns",
       "fragment",
       "custom_cards",
-      "gallery"
+      "gallery",
+      "carousel"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-slide"
     ]
   },
   {
