@@ -390,8 +390,23 @@ main .default-content-wrapper > h3 {
   text-align: center;
 }
 
+/* About Urban Roast: card-like container inset ~40px from the page edges */
+main .default-content-wrapper:has(> #about-urban-roast) {
+  box-sizing: border-box;
+  width: calc(100% - 16px);
+  max-width: 900px;
+  margin-block-start: 48px;
+  margin-inline: auto;
+  padding: 32px;
+  border: 1px solid #e6d9cc;
+  border-radius: 12px;
+  background-color: #fff8f0;
+  box-shadow: 0 6px 20px rgb(75 46 43 / 8%);
+}
+
 /* Justify the About Urban Roast description paragraphs */
 main .default-content-wrapper:has(> #about-urban-roast) > p {
+  font-size: 14px;
   text-align: justify;
 }
 
