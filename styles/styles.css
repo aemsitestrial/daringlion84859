@@ -239,6 +239,36 @@ main > .section:first-child .default-content-wrapper > p:first-child picture img
   margin-inline: auto;
 }
 
+/* Overlay the caption in the middle of the hero photo, in white */
+main > .section:first-child .default-content-wrapper {
+  position: relative;
+}
+
+main > .section:first-child .default-content-wrapper > p:has(em) {
+  box-sizing: border-box;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1920 / 900;
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 50%);
+  pointer-events: none;
+}
+
+main > .section:first-child .default-content-wrapper > p:has(em) em {
+  color: #fff;
+}
+
+main > .section:first-child .default-content-wrapper > p:first-child {
+  margin-block: 0;
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;
