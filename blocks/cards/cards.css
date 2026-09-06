@@ -8,7 +8,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-gap: 32px;
 }
 
 /* Always 3 cards side by side on tablet and up */
