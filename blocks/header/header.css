@@ -75,6 +75,14 @@ header nav .nav-hamburger button {
   white-space: initial;
 }
 
+/* Keep the hamburger flat on hover (no button lift/shadow) */
+header nav .nav-hamburger button:hover,
+header nav .nav-hamburger button:focus {
+  background-color: transparent;
+  transform: none;
+  box-shadow: none;
+}
+
 header nav .nav-hamburger-icon,
 header nav .nav-hamburger-icon::before,
 header nav .nav-hamburger-icon::after {
