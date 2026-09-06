@@ -136,6 +136,13 @@ export default async function decorate(block) {
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+      // Make plain-text nav items clickable (placeholder link until authored).
+      else if (!navSection.querySelector('a')) {
+        const link = document.createElement('a');
+        link.href = '#';
+        while (navSection.firstChild) link.append(navSection.firstChild);
+        navSection.append(link);
+      }
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
