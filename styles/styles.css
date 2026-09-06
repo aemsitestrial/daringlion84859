@@ -15,7 +15,7 @@
   --background-color: white;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #131313;
+  --text-color: #4b2e2b;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
@@ -84,6 +84,52 @@ body.appear {
   display: block;
 }
 
+/* Preloader / landing splash shown before the page is ready */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background-color: #fff8f0;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.preloader-hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#preloader .preloader-brand {
+  color: #4b2e2b;
+  font-family: var(--heading-font-family, var(--body-font-family));
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+#preloader .preloader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgb(75 46 43 / 20%);
+  border-top-color: #7b542f;
+  border-radius: 50%;
+  animation: preloader-spin 0.8s linear infinite;
+}
+
+@keyframes preloader-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #preloader .preloader-spinner {
+    animation-duration: 1.6s;
+  }
+}
+
 /* Hide the scrollbar visually while keeping the page scrollable */
 html {
   scrollbar-width: none; /* Firefox */
@@ -92,6 +138,30 @@ html {
 
 html::-webkit-scrollbar {
   display: none; /* WebKit (Chrome, Safari) */
+}
+
+/* Scroll-reveal: fade + rise as elements enter the viewport */
+main .reveal,
+main .cards > ul > li.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+main .reveal.revealed,
+main .cards > ul > li.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main .reveal,
+  main .cards > ul > li.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 header {
