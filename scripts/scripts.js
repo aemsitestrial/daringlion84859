@@ -134,12 +134,51 @@ async function loadEager(doc) {
 }
 
 /**
+ * Fades + rises elements in as they scroll into view, and fades them back out
+ * once they leave, so only what the user is currently looking at is shown.
+ * Honors prefers-reduced-motion by skipping the effect entirely.
+ * @param {Element} main The main element
+ */
+function initScrollReveal(main) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Sections reveal as a whole; individual cards reveal (and stagger) within.
+  const targets = [...main.querySelectorAll(':scope > .section')];
+  main.querySelectorAll('.cards > ul > li').forEach((li) => targets.push(li));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const el = entry.target;
+      if (entry.isIntersecting) {
+        // Stagger sibling cards for a cascading effect on the way in.
+        const siblings = el.parentElement && el.matches('.cards > ul > li')
+          ? [...el.parentElement.children] : [];
+        const index = siblings.indexOf(el);
+        el.style.transitionDelay = index > 0 ? `${Math.min(index * 80, 400)}ms` : '';
+        el.classList.add('revealed');
+      } else {
+        // Fade back out when scrolled past, no delay on the way out.
+        el.style.transitionDelay = '';
+        el.classList.remove('revealed');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+  targets.forEach((el) => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
+
+  initScrollReveal(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
@@ -162,9 +201,45 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+// How long the landing splash stays visible once the page is ready (ms).
+const PRELOADER_MIN_MS = 1500;
+
+/**
+ * Injects the landing splash (brand + spinner) shown before the page loads.
+ * @returns {Element} the preloader element
+ */
+function showPreloader() {
+  const preloader = document.createElement('div');
+  preloader.id = 'preloader';
+  preloader.innerHTML = `
+    <div class="preloader-brand">Urban Roast</div>
+    <div class="preloader-spinner" role="status" aria-label="Loading"></div>`;
+  // Attach to the root element so it shows before body.appear is set.
+  document.documentElement.append(preloader);
+  return preloader;
+}
+
+/**
+ * Fades out and removes the preloader.
+ * @param {Element} preloader the preloader element
+ */
+function hidePreloader(preloader) {
+  if (!preloader) return;
+  preloader.classList.add('preloader-hide');
+  preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
+}
+
 async function loadPage() {
+  const preloader = showPreloader();
+  const startedAt = performance.now();
+
   await loadEager(document);
   await loadLazy(document);
+
+  // Keep the splash up for at least PRELOADER_MIN_MS, then fade it out.
+  const elapsed = performance.now() - startedAt;
+  window.setTimeout(() => hidePreloader(preloader), Math.max(0, PRELOADER_MIN_MS - elapsed));
+
   loadDelayed();
 }
 
