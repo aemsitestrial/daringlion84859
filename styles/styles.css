@@ -368,6 +368,58 @@ main .default-content-wrapper:has(> #about-urban-roast) > p {
   text-align: justify;
 }
 
+/* Coffee category labels (Signature Drinks, Cold Brew, Non-Coffee): centered */
+/* stylelint-disable-next-line no-descending-specificity */
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 22px;
+}
+
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em {
+  position: relative;
+  display: inline-block;
+  color: var(--text-color);
+  font-style: normal;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Underline that grows from the center on hover */
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background-color: #c08552;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em:hover,
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em.label-hover {
+  transform: scale(1.08);
+  color: #c08552;
+}
+
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em:hover::after,
+main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em.label-hover::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em,
+  main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em::after {
+    transition: none;
+  }
+
+  main .default-content-wrapper > p:has(> em:only-child > strong:only-child) > em:hover {
+    transform: none;
+  }
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;

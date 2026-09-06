@@ -74,4 +74,13 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
+
+  // Activate the preceding category label's animation while the cards are hovered.
+  const wrapper = block.closest('.cards-wrapper');
+  const prev = wrapper && wrapper.previousElementSibling;
+  const label = prev && prev.querySelector('p:has(> em:only-child > strong:only-child) > em');
+  if (label) {
+    block.addEventListener('mouseenter', () => label.classList.add('label-hover'));
+    block.addEventListener('mouseleave', () => label.classList.remove('label-hover'));
+  }
 }
