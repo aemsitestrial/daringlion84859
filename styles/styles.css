@@ -267,6 +267,7 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 a.button:hover,
@@ -274,7 +275,29 @@ a.button:focus,
 button:hover,
 button:focus {
   background-color: #a66f42;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgb(75 46 43 / 30%);
   cursor: pointer;
+}
+
+a.button:active,
+button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.button:any-link,
+  button {
+    transition: background-color 0.3s ease;
+  }
+
+  a.button:hover,
+  a.button:focus,
+  button:hover,
+  button:focus {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 button:disabled,
