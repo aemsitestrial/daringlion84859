@@ -11,11 +11,19 @@ function isImageLink(a) {
   return a && (IMAGE_HREF.test(a.getAttribute('href') || '') || a.href.includes('/adobe/assets/'));
 }
 
+// AEM asset delivery URLs serve the full-resolution original by default,
+// which can be many MB. Request an optimized rendition via delivery params.
+function optimizeAemUrl(url) {
+  if (!url.includes('/adobe/assets/') || /[?&]width=/.test(url)) return url;
+  const sep = url.includes('?') ? '&' : '?';
+  return `${url}${sep}width=1200&format=webply&optimize=medium`;
+}
+
 // Convert a link-to-an-image into an actual <picture><img> so it displays.
 function linkToPicture(a) {
   const picture = document.createElement('picture');
   const img = document.createElement('img');
-  img.src = a.getAttribute('href');
+  img.src = optimizeAemUrl(a.getAttribute('href'));
   img.loading = 'lazy';
   img.alt = a.textContent.trim().startsWith('http') ? '' : a.textContent.trim();
   picture.append(img);
