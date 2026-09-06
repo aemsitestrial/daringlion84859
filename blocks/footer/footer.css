@@ -1,6 +1,6 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #fff8f0;
+  font-size: 14px;
 }
 
 footer .footer > div {
@@ -11,6 +11,15 @@ footer .footer > div {
 
 footer .footer p {
   margin: 0;
+}
+
+footer .footer h1,
+footer .footer h2,
+footer .footer h3,
+footer .footer h4,
+footer .footer h5,
+footer .footer h6 {
+  font-size: 16px;
 }
 
 @media (width >= 900px) {
