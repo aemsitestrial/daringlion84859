@@ -290,6 +290,10 @@ button.secondary {
   color: var(--text-color);
 }
 
+.button-container {
+  text-align: center;
+}
+
 main img {
   max-width: 100%;
   width: auto;
