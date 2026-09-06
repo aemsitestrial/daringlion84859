@@ -227,6 +227,18 @@ main img {
   width: 100%;
 }
 
+/* Hero photo: leading image of the first section, capped at 1920x900 */
+main > .section:first-child .default-content-wrapper > p:first-child picture,
+main > .section:first-child .default-content-wrapper > p:first-child picture img {
+  display: block;
+  width: 100%;
+  max-width: 1920px;
+  aspect-ratio: 1920 / 900;
+  height: auto;
+  object-fit: cover;
+  margin-inline: auto;
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;
