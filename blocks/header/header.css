@@ -216,6 +216,42 @@ header nav .nav-sections ul > li {
   font-weight: 500;
 }
 
+/* Nav item hover: color shift + animated underline growing from center */
+header nav .nav-sections ul > li > a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+header nav .nav-sections ul > li > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #c08552;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+header nav .nav-sections ul > li > a:hover {
+  color: #c08552;
+}
+
+header nav .nav-sections ul > li > a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header nav .nav-sections ul > li > a,
+  header nav .nav-sections ul > li > a::after {
+    transition: none;
+  }
+}
+
 header nav .nav-sections ul > li > ul {
   margin-top: 0;
 }
