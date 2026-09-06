@@ -154,6 +154,29 @@ header .nav-brand {
   color: #4b2e2b;
 }
 
+/* Brand link grows on hover */
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-brand a {
+  display: inline-block;
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-brand a:hover {
+  transform: scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header .nav-brand a {
+    transition: none;
+  }
+
+  header .nav-brand a:hover {
+    transform: none;
+  }
+}
+
 header nav .nav-brand img {
   width: 128px;
   height: auto;
@@ -225,6 +248,7 @@ header nav .nav-sections ul > li {
 }
 
 /* Nav item hover: color shift + animated underline growing from center */
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections ul > li > a {
   position: relative;
   color: inherit;
