@@ -1,15 +1,26 @@
+/* Break the carousel out of the section container to span the full viewport */
 .carousel {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-inline: -50vw;
   margin-top: 24px;
 }
 
 .carousel .carousel-track {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin-inline: auto;
   aspect-ratio: 16 / 9;
+  max-height: 70vh;
   overflow: hidden;
-  border-radius: 12px;
+}
+
+/* Shorter, more banner-like ratio on wide screens */
+@media (width >= 900px) {
+  .carousel .carousel-track {
+    aspect-ratio: 21 / 9;
+  }
 }
 
 .carousel .carousel-slide {
