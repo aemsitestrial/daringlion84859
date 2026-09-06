@@ -1,14 +1,18 @@
+/* Break the video out of the section container to span the full viewport */
 .video {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-inline: -50vw;
   margin-top: 24px;
 }
 
 .video video {
   display: block;
   width: 100%;
-  max-width: 960px;
-  margin-inline: auto;
   aspect-ratio: 16 / 9;
+  max-height: 80vh;
   object-fit: cover;
-  border-radius: 12px;
   background-color: #000;
 }
