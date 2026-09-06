@@ -4,29 +4,20 @@
 
 .cards > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
+
+  /* 2 compact cards per row on small screens */
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
 }
 
-/* More, smaller cards per row as the screen widens */
+/* Cap at 3 per row; the max-width keeps each card at its compact size */
 @media (width >= 600px) {
   .cards > ul {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (width >= 900px) {
-  .cards > ul {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (width >= 1200px) {
-  .cards > ul {
-    grid-template-columns: repeat(5, 1fr);
+    max-width: 715px;
   }
 }
 
