@@ -16,7 +16,8 @@
       "cards",
       "columns",
       "fragment",
-      "custom_cards"
+      "custom_cards",
+      "gallery"
     ]
   },
   {
@@ -44,6 +45,12 @@
     "id": "custom_cards",
     "components": [
       "custom_card"
+    ]
+  },
+  {
+    "id": "gallery",
+    "components": [
+      "gallery-image"
     ]
   }
 ]

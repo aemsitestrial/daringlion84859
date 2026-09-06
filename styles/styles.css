@@ -355,6 +355,11 @@ main .default-content-wrapper > h3 {
   text-align: center;
 }
 
+/* Justify the About Urban Roast description paragraphs */
+main .default-content-wrapper:has(> #about-urban-roast) > p {
+  text-align: justify;
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;
