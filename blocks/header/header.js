@@ -131,6 +131,9 @@ export default async function decorate(block) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
   }
+  // Point the brand link at the Urban Roast home page.
+  const brandAnchor = navBrand.querySelector('a');
+  if (brandAnchor) brandAnchor.href = '/hands-on-activity';
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
