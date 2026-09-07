@@ -440,6 +440,11 @@ main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Give the About section room so it sits alone on screen when scrolled to */
+main .default-content-wrapper:has(> #about-urban-roast) {
+  margin-block: 120px;
+}
+
 /* Lift the section containers on hover */
 main .default-content-wrapper:has(> #about-urban-roast):hover,
 main .default-content-wrapper:has(> #where-great-coffee-meets-good-company):hover,
