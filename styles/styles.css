@@ -440,9 +440,12 @@ main .default-content-wrapper:has(> #where-great-coffee-meets-good-company) {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Give the About section room so it sits alone on screen when scrolled to */
+/* Give the About section its own full-height screen so only it is visible
+   when scrolled to (carousel above / footer below stay out of view).
+   Large vertical margins center the card within a tall empty band. */
 main .default-content-wrapper:has(> #about-urban-roast) {
-  margin-block: 120px;
+  scroll-margin-top: var(--nav-height);
+  margin-block: 320px;
 }
 
 /* Lift the section containers on hover */
