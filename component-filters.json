@@ -2,7 +2,11 @@
   {
     "id": "main",
     "components": [
-      "section"
+      "section",
+      "section-hero",
+      "section-promo",
+      "section-menu",
+      "section-about"
     ]
   },
   {
@@ -20,6 +24,43 @@
       "gallery",
       "carousel",
       "video"
+    ]
+  },
+  {
+    "id": "section-hero",
+    "components": [
+      "hero",
+      "carousel",
+      "video",
+      "image",
+      "title"
+    ]
+  },
+  {
+    "id": "section-promo",
+    "components": [
+      "gallery",
+      "video",
+      "image",
+      "text"
+    ]
+  },
+  {
+    "id": "section-menu",
+    "components": [
+      "cards",
+      "custom_cards",
+      "title",
+      "text"
+    ]
+  },
+  {
+    "id": "section-about",
+    "components": [
+      "text",
+      "title",
+      "image",
+      "columns"
     ]
   },
   {

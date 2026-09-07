@@ -75,6 +75,66 @@
               }
             }
           }
+        },
+        {
+          "title": "Section (Hero)",
+          "id": "section-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "model": "section",
+                  "filter": "section-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Section (Promo)",
+          "id": "section-promo",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "model": "section",
+                  "filter": "section-promo"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Section (Menu)",
+          "id": "section-menu",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "model": "section",
+                  "filter": "section-menu"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Section (About)",
+          "id": "section-about",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "model": "section",
+                  "filter": "section-about"
+                }
+              }
+            }
+          }
         }
       ]
     },

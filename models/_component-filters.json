@@ -2,7 +2,11 @@
   {
     "id": "main",
     "components": [
-      "section"
+      "section",
+      "section-hero",
+      "section-promo",
+      "section-menu",
+      "section-about"
     ]
   },
   {

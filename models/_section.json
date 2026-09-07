@@ -13,6 +13,66 @@
           }
         }
       }
+    },
+    {
+      "title": "Section (Hero)",
+      "id": "section-hero",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section",
+              "filter": "section-hero"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Section (Promo)",
+      "id": "section-promo",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section",
+              "filter": "section-promo"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Section (Menu)",
+      "id": "section-menu",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section",
+              "filter": "section-menu"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Section (About)",
+      "id": "section-about",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section",
+              "filter": "section-about"
+            }
+          }
+        }
+      }
     }
   ],
   "models": [
@@ -55,6 +115,43 @@
         "gallery",
         "carousel",
         "video"
+      ]
+    },
+    {
+      "id": "section-hero",
+      "components": [
+        "hero",
+        "carousel",
+        "video",
+        "image",
+        "title"
+      ]
+    },
+    {
+      "id": "section-promo",
+      "components": [
+        "gallery",
+        "video",
+        "image",
+        "text"
+      ]
+    },
+    {
+      "id": "section-menu",
+      "components": [
+        "cards",
+        "custom_cards",
+        "title",
+        "text"
+      ]
+    },
+    {
+      "id": "section-about",
+      "components": [
+        "text",
+        "title",
+        "image",
+        "columns"
       ]
     }
   ]
