@@ -81,7 +81,29 @@ body {
 }
 
 body.appear {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main grows to fill the viewport so the footer stays at the bottom
+   even when a page has little content. */
+body.appear > main {
+  flex: 1 0 auto;
+}
+
+/* Order Now "coming soon" page: center the message in the full-height main */
+body.appear > main:has(#brewing-something-better) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+main:has(#brewing-something-better) #brewing-something-better {
+  font-size: var(--heading-font-size-xxl);
 }
 
 /* Preloader / landing splash shown before the page is ready */
